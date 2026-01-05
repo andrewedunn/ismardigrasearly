@@ -35,7 +35,7 @@ body {
 }
 
 .hero {
-  padding: 3rem 6vw 2rem;
+  padding: 2.6rem 6vw 0.8rem;
   max-width: 1100px;
   margin: 0 auto;
   animation: floatIn 0.8s ease-out both;
@@ -60,29 +60,19 @@ h1 {
   font-size: 1rem;
   max-width: 720px;
   color: var(--muted);
-  margin: 0 0 2rem;
+  margin: 0 0 1.4rem;
 }
 
-.lead-link {
-  color: var(--muted);
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: rgba(97, 86, 106, 0.45);
-}
-
-.lead-link:hover {
-  color: var(--purple-mid);
-  text-decoration-color: rgba(107, 46, 109, 0.6);
-}
 
 .year-panel {
   display: grid;
-  gap: 1.2rem;
+  gap: 0.8rem;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   background: var(--card);
-  padding: 1.25rem;
+  padding: 1rem 1.1rem;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  align-items: center;
 }
 
 .label {
@@ -95,29 +85,39 @@ h1 {
 
 .year-controls {
   display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 0.5rem;
-  margin-top: 0.7rem;
+  grid-template-columns: auto minmax(160px, 1fr) auto;
+  gap: 0.45rem;
   align-items: center;
+  justify-self: start;
 }
 
 input[type="number"] {
-  font-size: 1.05rem;
-  padding: 0.55rem 0.8rem;
-  border: 1px solid rgba(62, 27, 79, 0.2);
-  border-radius: 12px;
-  background: #fff;
-  color: var(--ink);
-  font-weight: 600;
+  font-family: "Fraunces", "Times New Roman", serif;
+  font-size: clamp(2.8rem, 5vw, 4rem);
+  text-align: center;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--purple-deep);
+  font-weight: 700;
+  appearance: textfield;
+  line-height: 1;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .step {
   border: none;
   background: var(--purple-deep);
   color: #fff;
-  font-size: 1.2rem;
-  width: 42px;
-  height: 42px;
+  font-size: 1.3rem;
+  width: 40px;
+  height: 40px;
   border-radius: 14px;
   cursor: pointer;
   transition: transform 0.2s ease, background 0.2s ease;
@@ -130,18 +130,20 @@ input[type="number"] {
 
 .date-display {
   text-align: right;
+  justify-self: end;
 }
 
 .date-hero {
   font-family: "Fraunces", "Times New Roman", serif;
-  font-size: clamp(2.3rem, 4vw, 3rem);
-  margin-top: 0.6rem;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  margin-top: 0.2rem;
   color: var(--purple-deep);
 }
 
 .date-sub {
   color: var(--muted);
   font-weight: 600;
+  font-size: 0.95rem;
 }
 
 main {
@@ -151,7 +153,7 @@ main {
 }
 
 .section {
-  margin-top: 2.4rem;
+  margin-top: 1.6rem;
   animation: fadeUp 0.8s ease-out both;
 }
 
@@ -180,7 +182,116 @@ main {
 
 .verdict {
   display: grid;
-  gap: 0.9rem;
+  gap: 0.5rem;
+}
+
+.timeline {
+  margin: 0.2rem 0 0.85rem;
+}
+
+.timeline-range {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 0.6rem;
+}
+
+.timeline-stack {
+  position: relative;
+  display: grid;
+  gap: 0.7rem;
+  padding-top: 0.8rem;
+}
+
+.timeline-row {
+  display: flex;
+  border-radius: 999px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.segment {
+  flex: var(--days) 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4rem 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.segment-early {
+  background: rgba(214, 161, 43, 0.35);
+  color: #5c3b00;
+}
+
+.segment-early-soft {
+  background: rgba(214, 161, 43, 0.22);
+  color: #5c3b00;
+}
+
+.segment-mid {
+  background: rgba(15, 107, 74, 0.2);
+  color: #0c4b35;
+}
+
+.segment-late-soft {
+  background: rgba(107, 46, 109, 0.18);
+  color: #3e1b4f;
+}
+
+.segment-late {
+  background: rgba(107, 46, 109, 0.35);
+  color: #3e1b4f;
+}
+
+.short-label {
+  display: none;
+}
+
+.timeline-marker {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  transform: translateX(-50%);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.marker-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: var(--purple-deep);
+  border-radius: 999px;
+}
+
+.marker-label {
+  position: absolute;
+  top: -1.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card);
+  color: var(--purple-deep);
+  border: 1px solid rgba(62, 27, 79, 0.2);
+  border-radius: 999px;
+  padding: 0.15rem 0.55rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 18px rgba(30, 20, 40, 0.12);
+  white-space: nowrap;
 }
 
 
@@ -203,22 +314,10 @@ main {
   font-weight: 700;
   margin: 0.4rem 0 0;
   color: var(--purple-deep);
+  line-height: 1.2;
 }
 
-.verdict-card.mood {
-  margin-top: 1rem;
-  background: linear-gradient(135deg, rgba(214, 161, 43, 0.22), rgba(15, 107, 74, 0.12));
-  border: 1px solid rgba(214, 161, 43, 0.5);
-}
 
-.verdict-card.mood .result {
-  font-size: 1.7rem;
-}
-
-.note {
-  color: var(--muted);
-  margin-top: 0.6rem;
-}
 
 .table-wrap {
   background: var(--card);
@@ -259,6 +358,56 @@ main {
   font-size: 0.92rem;
 }
 
+
+.expander {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0.6rem 1rem;
+}
+
+.expander summary {
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1.05rem;
+  list-style: none;
+}
+
+.expander summary::-webkit-details-marker {
+  display: none;
+}
+
+.expander[open] summary {
+  margin-bottom: 0.6rem;
+}
+
+.expander-body {
+  padding-bottom: 0.6rem;
+}
+
+.faq details {
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 0.8rem 1rem;
+  margin-top: 0.8rem;
+}
+
+.faq summary {
+  cursor: pointer;
+  font-weight: 700;
+  list-style: none;
+}
+
+.faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq p {
+  margin: 0.6rem 0 0;
+  color: var(--muted);
+}
+
 .table-wrap table {
   width: 100%;
   border-collapse: collapse;
@@ -290,34 +439,10 @@ tr.highlight td {
   border-bottom: 2px solid var(--purple-mid);
 }
 
-.future tbody tr {
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
 
-.future tbody tr:hover td {
-  background: rgba(15, 107, 74, 0.12);
-}
 
-.summary-grid {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-}
 
-.summary-card {
-  background: var(--card);
-  border-radius: var(--radius);
-  padding: 1rem 1.2rem;
-  box-shadow: var(--shadow);
-}
 
-.summary-card .bar {
-  height: 10px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, var(--green), var(--gold));
-  margin-top: 0.6rem;
-}
 
 footer {
   padding: 2.2rem 6vw 3rem;
@@ -367,11 +492,11 @@ footer {
 
 @media (max-width: 720px) {
   .hero {
-    padding: 2.4rem 5vw 1.8rem;
+    padding: 2.1rem 5vw 0.9rem;
   }
 
   .lead {
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.1rem;
   }
 
   .year-panel {
@@ -384,7 +509,7 @@ footer {
   }
 
   .year-panel.compact {
-    padding: 0.55rem 0.75rem;
+    padding: 0.6rem 0.75rem;
     gap: 0.6rem;
     grid-template-columns: 1.1fr 0.9fr;
     border-radius: 16px;
@@ -399,7 +524,7 @@ footer {
   }
 
   .year-panel.compact .date-hero {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     margin-top: 0;
   }
 
@@ -408,11 +533,13 @@ footer {
   }
 
   .year-controls {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto minmax(120px, 1fr) auto;
+    gap: 0.35rem;
   }
 
   .date-display {
     text-align: left;
+    justify-self: start;
   }
 
   .date-hero {
@@ -420,7 +547,20 @@ footer {
   }
 
   .section {
-    margin-top: 2rem;
+    margin-top: 1.6rem;
+  }
+
+  .segment {
+    font-size: 0.62rem;
+    letter-spacing: 0.05em;
+  }
+
+  .full-label {
+    display: none;
+  }
+
+  .short-label {
+    display: inline;
   }
 
   th,
@@ -444,6 +584,14 @@ footer {
 
   .verdict-grid {
     grid-template-columns: 1fr;
+  }
+
+  .verdict-card .result {
+    font-size: 1.25rem;
+  }
+
+  .verdict-card.mood .result {
+    font-size: 1.5rem;
   }
 
   .verdict-card.mood {

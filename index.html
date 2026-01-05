@@ -5,6 +5,30 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Is Mardi Gras Early?</title>
+
+    <meta
+      name="description"
+      content="Is Mardi Gras early this year? Find the next Mardi Gras date and see how early or late it is across multiple classifications."
+    />
+    <link rel="canonical" href="https://ismardigrasearly.com/" />
+    <meta property="og:title" content="Is Mardi Gras Early?" />
+    <meta
+      property="og:description"
+      content="Find the next Mardi Gras date and see how early or late it feels, from halves to mood."
+    />
+    <meta property="og:url" content="https://ismardigrasearly.com/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Is Mardi Gras Early?" />
+    <meta property="og:image" content="https://ismardigrasearly.com/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Is Mardi Gras Early?" />
+    <meta
+      name="twitter:description"
+      content="Find the next Mardi Gras date and see how early or late it feels, from halves to mood."
+    />
+    <meta name="twitter:image" content="https://ismardigrasearly.com/og-image.png" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -12,23 +36,30 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Is Mardi Gras Early?",
+        "url": "https://ismardigrasearly.com/",
+        "description": "Find the next Mardi Gras date and see how early or late it is across multiple classifications."
+      }
+    </script>
   </head>
   <body>
     <div class="glow"></div>
     <header class="hero">
       <p class="eyebrow">Is Mardi Gras early this year?</p>
-      <h1>New Orleans most important question.</h1>
+      <h1>New Orleans' most important question.</h1>
       <p class="lead">
-        Mardi Gras is always 47 days before Easter. Choose a year to see where
-        it lands on the calendar and how it stacks up.
-        <a class="lead-link" href="https://dunn.us/notes/is-mardi-gras-early">
-          Read more about the classification.
-        </a>
+        Every January, New Orleanians proclaim Mardi Gras "early" or "late."
+        But who decides? And why only two options? Here's how this year lands
+        depending on how you want to split the dates.
       </p>
 
       <div class="year-panel">
         <div class="year-display">
-          <span class="label">Selected year</span>
           <div class="year-controls">
             <button class="step" id="yearDown" aria-label="Previous year">
               −
@@ -39,7 +70,6 @@
         </div>
 
         <div class="date-display">
-          <span class="label">Mardi Gras date</span>
           <div class="date-hero" id="mardiDate">Feb 17</div>
           <div class="date-sub" id="mardiWeekday">Tuesday, Feb 17</div>
         </div>
@@ -48,86 +78,135 @@
 
     <main>
       <section class="section verdict" id="verdict">
-        <h2>Is Mardi Gras early?</h2>
-        <p class="section-note">
-          Here's your answer depending on how you split the possible dates.
-        </p>
+        <div class="timeline">
+          <div class="timeline-range">
+            <span>Feb 3</span>
+            <span>Mar 9</span>
+          </div>
+          <div class="timeline-stack">
+            <div class="timeline-row">
+              <div class="segment segment-early" style="--days: 18;">
+                <span class="full-label">Early</span>
+                <span class="short-label">E</span>
+              </div>
+              <div class="segment segment-late" style="--days: 18;">
+                <span class="full-label">Late</span>
+                <span class="short-label">L</span>
+              </div>
+            </div>
+            <div class="timeline-row">
+              <div class="segment segment-early" style="--days: 12;">
+                <span class="full-label">Early</span>
+                <span class="short-label">E</span>
+              </div>
+              <div class="segment segment-mid" style="--days: 12;">
+                <span class="full-label">Kinda in the Middle</span>
+                <span class="short-label">M</span>
+              </div>
+              <div class="segment segment-late" style="--days: 12;">
+                <span class="full-label">Late</span>
+                <span class="short-label">L</span>
+              </div>
+            </div>
+            <div class="timeline-row">
+              <div class="segment segment-early" style="--days: 9;">
+                <span class="full-label">Early</span>
+                <span class="short-label">E</span>
+              </div>
+              <div class="segment segment-early-soft" style="--days: 9;">
+                <span class="full-label">Kinda Early</span>
+                <span class="short-label">KE</span>
+              </div>
+              <div class="segment segment-late-soft" style="--days: 9;">
+                <span class="full-label">Kinda Late</span>
+                <span class="short-label">KL</span>
+              </div>
+              <div class="segment segment-late" style="--days: 9;">
+                <span class="full-label">Late</span>
+                <span class="short-label">L</span>
+              </div>
+            </div>
+            <div class="timeline-marker" id="timelineMarker">
+              <div class="marker-label" id="timelineMarkerLabel">Feb 17</div>
+              <div class="marker-line"></div>
+            </div>
+          </div>
+        </div>
         <div class="verdict-grid">
           <article class="verdict-card">
-            <span class="label">Halves</span>
+            <span class="label">Two Buckets</span>
             <p class="result" id="halvesResult">Early</p>
           </article>
           <article class="verdict-card">
-            <span class="label">Thirds</span>
-            <p class="result" id="thirdsResult">Mid</p>
+            <span class="label">Three Buckets</span>
+            <p class="result" id="thirdsResult">Kinda in the Middle</p>
           </article>
           <article class="verdict-card">
-            <span class="label">Fourths</span>
+            <span class="label">Four Buckets</span>
             <p class="result" id="fourthsResult">Early</p>
           </article>
         </div>
-        <article class="verdict-card mood">
-          <span class="label">Mood</span>
-          <p class="result" id="moodResult">Plenty of time</p>
-          <p class="note">
-            The "real" answer, captured in a feeling you can argue about.
+      </section>
+
+      <section class="section">
+        <details class="expander" id="allDates">
+          <summary>See all 36 possible dates →</summary>
+          <div class="expander-body">
+            <p class="section-note">
+              There are 36 possible dates, from Feb 3 to Mar 9. Your selected
+              year is highlighted.
+            </p>
+            <div class="table-wrap">
+              <table class="breakdown" id="breakdownTable">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Two Buckets</th>
+                    <th>Three Buckets</th>
+                    <th>Four Buckets</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <div class="card-list" id="breakdownCards" aria-hidden="true"></div>
+          </div>
+        </details>
+      </section>
+
+      <section class="section faq">
+        <h2>FAQ</h2>
+        <details>
+          <summary>Why does Mardi Gras move around?</summary>
+          <p>
+            Mardi Gras is always 47 days before Easter. Easter follows the lunar
+            calendar, so it shifts each year, and Mardi Gras shifts with it.
           </p>
-        </article>
+        </details>
+        <details>
+          <summary>What's the earliest and latest possible date?</summary>
+          <p>
+            Earliest is February 3. Latest is March 9. That's a 35-day window
+            (36 if you count February 29 in leap years).
+          </p>
+        </details>
+        <details>
+          <summary>Why does the timing matter?</summary>
+          <p>
+            Two reasons. First, king cake season length — Carnival starts
+            January 6, so an early Mardi Gras means fewer weeks of king cake.
+            Second, weather — early February often needs a coat on the parade
+            route, while early March is sunburn territory.
+          </p>
+        </details>
       </section>
 
-      <section class="section">
-        <h2>Every possible Mardi Gras date</h2>
-        <p class="section-note">
-          There are 36 possible dates, from Feb 3 to Mar 9. Your selected year
-          is highlighted.
-        </p>
-        <div class="table-wrap">
-          <table class="breakdown" id="breakdownTable">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Halves</th>
-                <th>Thirds</th>
-                <th>Fourths</th>
-                <th>Mood</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-        <div class="card-list" id="breakdownCards" aria-hidden="true"></div>
-      </section>
-
-      <section class="section">
-        <h2>Next 50 years</h2>
-        <p class="section-note">
-          Tap a year to jump the hero section to that verdict.
-        </p>
-        <div class="table-wrap">
-          <table class="future" id="nextTable">
-            <thead>
-              <tr>
-                <th>Year</th>
-                <th>Date</th>
-                <th>Fourths</th>
-                <th>Mood</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-        <div class="card-list" id="nextCards" aria-hidden="true"></div>
-      </section>
-
-      <section class="section summary">
-        <h2>How the next 50 feel</h2>
-        <div class="summary-grid" id="summaryGrid"></div>
-      </section>
     </main>
 
     <footer>
       <div class="footer-links">
-        <a href="https://github.com/andrewedunn/ismardigrasearly">GitHub repo</a>
+        <a href="https://dunn.us/notes/is-mardi-gras-early">Read the blog post</a>
+        <a href="https://github.com/andrewedunn/ismardigrasearly">GitHub</a>
       </div>
     </footer>
 

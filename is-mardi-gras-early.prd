@@ -34,7 +34,7 @@ For the selected year, show the classification across all four systems:
 | System | Result |
 |--------|--------|
 | Halves | Early / Late |
-| Thirds | Early / Mid / Late |
+| Thirds | Early / Kinda in the Middle / Late |
 | Fourths | Very Early / Early / Late / Very Late |
 | Mood | Blink and you'll miss it / Plenty of time / Endless Carnival / Are we still doing this? |
 
@@ -80,7 +80,7 @@ Or a simple bar chart. Something to give a sense of "how often do we get each ty
 ### 6. Footer
 
 - Brief explanation: "Mardi Gras is 47 days before Easter. Earliest possible: Feb 3. Latest possible: Mar 9."
-- Link to blog post: "Read more about this project" → https://dunn.us/notes/is-mardi-gras-early (placeholder, update when published)
+- Link to blog post: "Read the blog post" → https://dunn.us/notes/is-mardi-gras-early
 - Credit: "Made by Andrew Dunn" → link to https://dunn.us
 
 ## Technical notes
@@ -95,7 +95,7 @@ Halves (18 days each):
 
 Thirds (12 days each):
 - Early: Feb 3–14
-- Mid: Feb 15–26
+- Kinda in the Middle: Feb 15–26
 - Late: Feb 27–Mar 9
 
 Fourths (9 days each):

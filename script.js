@@ -8,19 +8,10 @@ const mardiWeekday = document.getElementById("mardiWeekday");
 const halvesResult = document.getElementById("halvesResult");
 const thirdsResult = document.getElementById("thirdsResult");
 const fourthsResult = document.getElementById("fourthsResult");
-const moodResult = document.getElementById("moodResult");
 const breakdownTable = document.querySelector("#breakdownTable tbody");
 const breakdownCards = document.getElementById("breakdownCards");
-const nextTable = document.querySelector("#nextTable tbody");
-const nextCards = document.getElementById("nextCards");
-const summaryGrid = document.getElementById("summaryGrid");
-
-const moodLabels = [
-  "Blink and you'll miss it",
-  "Plenty of time",
-  "Endless Carnival",
-  "Are we still doing this?",
-];
+const timelineMarker = document.getElementById("timelineMarker");
+const timelineMarkerLabel = document.getElementById("timelineMarkerLabel");
 
 const possibleDates = buildPossibleDates();
 
@@ -110,23 +101,19 @@ function classifyByIndex(index) {
   if (number <= 12) {
     thirds = "Early";
   } else if (number <= 24) {
-    thirds = "Mid";
+    thirds = "Kinda in the Middle";
   }
 
-  let fourths = "Very Late";
-  let mood = moodLabels[3];
+  let fourths = "Kinda Late";
   if (number <= 9) {
-    fourths = "Very Early";
-    mood = moodLabels[0];
+    fourths = "Kinda Early";
   } else if (number <= 18) {
-    fourths = "Early";
-    mood = moodLabels[1];
+    fourths = "Kinda Early";
   } else if (number <= 27) {
-    fourths = "Late";
-    mood = moodLabels[2];
+    fourths = "Kinda Late";
   }
 
-  return { halves, thirds, fourths, mood };
+  return { halves, thirds, fourths };
 }
 
 function renderBreakdownTable(selectedIndex) {
@@ -146,7 +133,6 @@ function renderBreakdownTable(selectedIndex) {
       <td>${classification.halves}</td>
       <td>${classification.thirds}</td>
       <td>${classification.fourths}</td>
-      <td>${classification.mood}</td>
     `;
 
     breakdownTable.append(row);
@@ -168,100 +154,12 @@ function renderBreakdownCards(selectedIndex) {
 
     card.innerHTML = `
       <h3 class="card-title">${displayDate}</h3>
-      <div class="card-meta">Halves: ${classification.halves}</div>
-      <div class="card-meta">Thirds: ${classification.thirds}</div>
-      <div class="card-meta">Fourths: ${classification.fourths}</div>
-      <div class="card-meta">Mood: ${classification.mood}</div>
+      <div class="card-meta">Two Buckets: ${classification.halves}</div>
+      <div class="card-meta">Three Buckets: ${classification.thirds}</div>
+      <div class="card-meta">Four Buckets: ${classification.fourths}</div>
     `;
 
     breakdownCards.append(card);
-  });
-}
-
-function buildNextData(currentYear) {
-  const summaryCounts = {
-    [moodLabels[0]]: 0,
-    [moodLabels[1]]: 0,
-    [moodLabels[2]]: 0,
-    [moodLabels[3]]: 0,
-  };
-  const items = [];
-
-  for (let offset = 0; offset < 50; offset += 1) {
-    const year = currentYear + offset;
-    const mardi = mardiGrasDate(year);
-    const index = findDateIndex(mardi);
-    const classification = classifyByIndex(index);
-
-    summaryCounts[classification.mood] += 1;
-    items.push({ year, mardi, classification });
-  }
-
-  return { items, summaryCounts };
-}
-
-function renderNextTable(items, selectedYear) {
-  nextTable.innerHTML = "";
-
-  items.forEach((item) => {
-    const row = document.createElement("tr");
-    row.dataset.year = String(item.year);
-    if (item.year === selectedYear) {
-      row.classList.add("highlight");
-    }
-
-    row.innerHTML = `
-      <td>${item.year}</td>
-      <td>${formatDate(item.mardi)}</td>
-      <td>${item.classification.fourths}</td>
-      <td>${item.classification.mood}</td>
-    `;
-
-    row.addEventListener("click", () => setYear(item.year));
-    nextTable.append(row);
-  });
-}
-
-function renderNextCards(items, selectedYear) {
-  nextCards.innerHTML = "";
-
-  items.forEach((item) => {
-    const card = document.createElement("article");
-    card.className = "card-item";
-    card.dataset.year = String(item.year);
-    if (item.year === selectedYear) {
-      card.classList.add("highlight");
-    }
-
-    card.innerHTML = `
-      <h3 class="card-title">${item.year} · ${formatDate(item.mardi)}</h3>
-      <div class="card-meta">Fourths: ${item.classification.fourths}</div>
-      <div class="card-meta">Mood: ${item.classification.mood}</div>
-    `;
-
-    card.addEventListener("click", () => setYear(item.year));
-    nextCards.append(card);
-  });
-}
-
-function renderSummary(counts) {
-  summaryGrid.innerHTML = "";
-  const total = Object.values(counts).reduce((sum, value) => sum + value, 0);
-
-  moodLabels.forEach((mood) => {
-    const card = document.createElement("div");
-    card.className = "summary-card";
-
-    const count = counts[mood];
-    const percent = total ? Math.round((count / total) * 100) : 0;
-
-    card.innerHTML = `
-      <strong>${mood}</strong>
-      <div>${count} of ${total} years</div>
-      <div class="bar" style="width: ${percent}%;"></div>
-    `;
-
-    summaryGrid.append(card);
   });
 }
 
@@ -298,14 +196,20 @@ function setYear(year) {
   halvesResult.textContent = classification.halves;
   thirdsResult.textContent = classification.thirds;
   fourthsResult.textContent = classification.fourths;
-  moodResult.textContent = classification.mood;
 
+  updateTimelineMarker(index, mardi);
   renderBreakdownTable(index);
   renderBreakdownCards(index);
-  const nextData = buildNextData(new Date().getUTCFullYear());
-  renderNextTable(nextData.items, year);
-  renderNextCards(nextData.items, year);
-  renderSummary(nextData.summaryCounts);
+}
+
+function updateTimelineMarker(index, date) {
+  if (!timelineMarker || !timelineMarkerLabel || index < 0) {
+    return;
+  }
+
+  const percent = (index / (possibleDates.length - 1)) * 100;
+  timelineMarker.style.left = `${percent}%`;
+  timelineMarkerLabel.textContent = formatDate(date);
 }
 
 function init() {
