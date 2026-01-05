@@ -1,0 +1,133 @@
+# IsMardiGrasEarly.com
+
+A single-page website that answers the age-old New Orleans question: is Mardi Gras early this year?
+
+## What it does
+
+The site detects the next upcoming Mardi Gras, classifies it using four different systems, and lets users explore any year they want.
+
+## Design
+
+**Colors:** Purple, green, and gold (traditional Mardi Gras colors). Should feel festive but tasteful. Think refined, not Bourbon Street gift shop. Good contrast, accessible.
+
+**Layout:** Single page, centered content, clean typography. Mobile-friendly.
+
+**Tone:** Fun but not goofy. A well-made silly thing.
+
+## Core sections
+
+### 1. Hero / Year selector
+
+The selected year's Mardi Gras date displayed large and prominent. Default to the next upcoming Mardi Gras (if today is January 5, 2026, show 2026).
+
+Users can change the year by:
+- Typing directly into the year (editable number)
+- Or increment/decrement buttons
+- Or a dropdown
+
+Make it obvious this is interactive.
+
+### 2. The verdict
+
+For the selected year, show the classification across all four systems:
+
+| System | Result |
+|--------|--------|
+| Halves | Early / Late |
+| Thirds | Early / Mid / Late |
+| Fourths | Very Early / Early / Late / Very Late |
+| Mood | Blink and you'll miss it / Plenty of time / Endless Carnival / Are we still doing this? |
+
+The Mood should feel like the "real" answer. Maybe larger or more prominent.
+
+### 3. The full breakdown table
+
+Show all 36 possible Mardi Gras dates with their classifications:
+
+| # | Date | Halves | Thirds | Fourths | Mood |
+|---|------|--------|--------|---------|------|
+| 1 | Feb. 3 | Early | Early | Very Early | Blink and you'll miss it |
+| ... | ... | ... | ... | ... | ... |
+| 36 | Mar. 9 | Late | Late | Very Late | Are we still doing this? |
+
+Highlight the row matching the selected year's date. The highlight should be visually obvious (background color, border, something).
+
+### 4. Next 50 years
+
+A table showing the next 50 Mardi Gras dates (starting from current year) with their verdicts:
+
+| Year | Date | Fourths | Mood |
+|------|------|---------|------|
+| 2026 | Feb. 17 | Early | Plenty of time |
+| 2027 | Feb. 9 | Very Early | Blink and you'll miss it |
+| ... | ... | ... | ... |
+
+Clicking a row (or the year) should update the main hero/verdict section to that year.
+
+### 5. Summary of next 50
+
+A small summary table or visualization showing the distribution:
+
+| Mood | Count |
+|------|-------|
+| Blink and you'll miss it | 12 |
+| Plenty of time | 14 |
+| Endless Carnival | 15 |
+| Are we still doing this? | 9 |
+
+Or a simple bar chart. Something to give a sense of "how often do we get each type?"
+
+### 6. Footer
+
+- Brief explanation: "Mardi Gras is 47 days before Easter. Earliest possible: Feb 3. Latest possible: Mar 9."
+- Link to blog post: "Read more about this project" → https://dunn.us/notes/is-mardi-gras-early (placeholder, update when published)
+- Credit: "Made by Andrew Dunn" → link to https://dunn.us
+
+## Technical notes
+
+**Calculating Mardi Gras:** Easter follows the Computus algorithm. Mardi Gras is always 47 days before Easter Sunday. There are JavaScript libraries for this, or the formula can be implemented directly.
+
+**Classification logic:**
+
+Halves (18 days each):
+- Early: Feb 3–20
+- Late: Feb 21–Mar 9
+
+Thirds (12 days each):
+- Early: Feb 3–14
+- Mid: Feb 15–26
+- Late: Feb 27–Mar 9
+
+Fourths (9 days each):
+- Very Early: Feb 3–11
+- Early: Feb 12–20
+- Late: Feb 21–Mar 1
+- Very Late: Mar 2–9
+
+Mood (same as Fourths):
+- Blink and you'll miss it: Feb 3–11
+- Plenty of time: Feb 12–20
+- Endless Carnival: Feb 21–Mar 1
+- Are we still doing this?: Mar 2–9
+
+**No backend required.** All calculations happen client-side.
+
+## Hosting & deployment
+
+**Repository:** Public GitHub repo (e.g., `andrewedunn/is-mardi-gras-early`)
+
+**Hosting:** Netlify, deployed from the GitHub repo. Or github pages with a custom domain.
+
+**Domain:** ismardigrasearly.com
+
+## Out of scope
+
+- User accounts
+- Sharing/social features
+- Historical Mardi Gras data (pre-2026)
+- Multiple cities (New Orleans only)
+- Parade schedules or other Carnival info
+
+## Success
+
+Someone in New Orleans can pull this up on their phone during a January conversation, type in the year, and settle the question with authority.

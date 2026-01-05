@@ -1,0 +1,147 @@
+<!-- Yes, this was totally vibe coded. -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Is Mardi Gras Early?</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=IBM+Plex+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="glow"></div>
+    <header class="hero">
+      <p class="eyebrow">Is Mardi Gras early this year?</p>
+      <h1>New Orleans most important question.</h1>
+      <p class="lead">
+        Mardi Gras is always 47 days before Easter. Choose a year to see where
+        it lands on the calendar and how it stacks up.
+        <a href="https://dunn.us/notes/is-mardi-gras-early">
+          Read more about the classification.
+        </a>
+      </p>
+
+      <div class="year-panel">
+        <div class="year-display">
+          <span class="label">Selected year</span>
+          <div class="year-controls">
+            <button class="step" id="yearDown" aria-label="Previous year">
+              −
+            </button>
+            <input id="yearInput" type="number" inputmode="numeric" />
+            <button class="step" id="yearUp" aria-label="Next year">+</button>
+          </div>
+        </div>
+
+        <div class="date-display">
+          <span class="label">Mardi Gras date</span>
+          <div class="date-hero" id="mardiDate">Feb 17</div>
+          <div class="date-sub" id="mardiWeekday">Tuesday, Feb 17</div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="section verdict" id="verdict">
+        <h2>Is Mardi Gras early?</h2>
+        <p class="section-note">
+          Here's your answer depending on how you split the possible dates.
+        </p>
+        <div class="verdict-grid">
+          <article class="verdict-card">
+            <span class="label">Halves</span>
+            <p class="result" id="halvesResult">Early</p>
+          </article>
+          <article class="verdict-card">
+            <span class="label">Thirds</span>
+            <p class="result" id="thirdsResult">Mid</p>
+          </article>
+          <article class="verdict-card">
+            <span class="label">Fourths</span>
+            <p class="result" id="fourthsResult">Early</p>
+          </article>
+        </div>
+        <article class="verdict-card mood">
+          <span class="label">Mood</span>
+          <p class="result" id="moodResult">Plenty of time</p>
+          <p class="note">
+            The "real" answer, captured in a feeling you can argue about.
+          </p>
+        </article>
+      </section>
+
+      <section class="section">
+        <h2>Every possible Mardi Gras date</h2>
+        <p class="section-note">
+          There are 36 possible dates, from Feb 3 to Mar 9. Your selected year
+          is highlighted.
+        </p>
+        <div class="table-wrap">
+          <table class="breakdown" id="breakdownTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Halves</th>
+                <th>Thirds</th>
+                <th>Fourths</th>
+                <th>Mood</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="card-list" id="breakdownCards" aria-hidden="true"></div>
+      </section>
+
+      <section class="section">
+        <h2>Next 50 years</h2>
+        <p class="section-note">
+          Tap a year to jump the hero section to that verdict.
+        </p>
+        <div class="table-wrap">
+          <table class="future" id="nextTable">
+            <thead>
+              <tr>
+                <th>Year</th>
+                <th>Date</th>
+                <th>Fourths</th>
+                <th>Mood</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <div class="card-list" id="nextCards" aria-hidden="true"></div>
+      </section>
+
+      <section class="section summary">
+        <h2>How the next 50 feel</h2>
+        <div class="summary-grid" id="summaryGrid"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        Mardi Gras is always 47 days before Easter. Earliest possible: Feb 3.
+        Latest possible: Mar 9.
+      </p>
+      <div class="footer-links">
+        <a href="https://dunn.us/notes/is-mardi-gras-early">Read more about this project</a>
+        <a href="https://github.com/andrewedunn/ismardigrasearly">GitHub repo</a>
+        <a href="https://dunn.us">Made by Andrew Dunn</a>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script
+      data-goatcounter="https://aed.goatcounter.com/count"
+      async
+      src="//gc.zgo.at/count.js"
+    ></script>
+  </body>
+</html>
