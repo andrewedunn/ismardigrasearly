@@ -104,9 +104,9 @@ function classifyByIndex(index) {
     thirds = "Kinda in the Middle";
   }
 
-  let fourths = "Kinda Late";
+  let fourths = "Late";
   if (number <= 9) {
-    fourths = "Kinda Early";
+    fourths = "Early";
   } else if (number <= 18) {
     fourths = "Kinda Early";
   } else if (number <= 27) {
