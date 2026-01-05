@@ -63,6 +63,18 @@ h1 {
   margin: 0 0 2rem;
 }
 
+.lead-link {
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(97, 86, 106, 0.45);
+}
+
+.lead-link:hover {
+  color: var(--purple-mid);
+  text-decoration-color: rgba(107, 46, 109, 0.6);
+}
+
 .year-panel {
   display: grid;
   gap: 1.2rem;
