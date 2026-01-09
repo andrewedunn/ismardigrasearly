@@ -12,6 +12,8 @@ const breakdownTable = document.querySelector("#breakdownTable tbody");
 const breakdownCards = document.getElementById("breakdownCards");
 const timelineMarker = document.getElementById("timelineMarker");
 const timelineMarkerLabel = document.getElementById("timelineMarkerLabel");
+const kingCakeDaysEl = document.getElementById("kingCakeDays");
+const kingCakeEndEl = document.getElementById("kingCakeEnd");
 
 const possibleDates = buildPossibleDates();
 
@@ -54,6 +56,20 @@ function easterDate(year) {
 function mardiGrasDate(year) {
   const easter = easterDate(year);
   return new Date(easter.getTime() - 47 * MS_DAY);
+}
+
+function kingCakeDays(mardiDate) {
+  const year = mardiDate.getUTCFullYear();
+  const jan6 = Date.UTC(year, 0, 6);
+  const mardiTime = mardiDate.getTime();
+  return Math.round((mardiTime - jan6) / MS_DAY) + 1;
+}
+
+function kingCakeDaysForDate(month, day) {
+  const year = 2020; // use leap year for consistency
+  const jan6 = Date.UTC(year, 0, 6);
+  const targetDate = Date.UTC(year, month, day);
+  return Math.round((targetDate - jan6) / MS_DAY) + 1;
 }
 
 function formatDate(date, withYear = false) {
@@ -128,8 +144,11 @@ function renderBreakdownTable(selectedIndex) {
     const classification = classifyByIndex(idx);
     const displayDate = `${formatMonthDay(date.month, date.day)}`;
 
+    const cakeDays = kingCakeDaysForDate(date.month, date.day);
+
     row.innerHTML = `
       <td>${displayDate}</td>
+      <td>${cakeDays}</td>
       <td>${classification.halves}</td>
       <td>${classification.thirds}</td>
       <td>${classification.fourths}</td>
@@ -152,8 +171,11 @@ function renderBreakdownCards(selectedIndex) {
     const classification = classifyByIndex(idx);
     const displayDate = `${formatMonthDay(date.month, date.day)}`;
 
+    const cakeDays = kingCakeDaysForDate(date.month, date.day);
+
     card.innerHTML = `
       <h3 class="card-title">${displayDate}</h3>
+      <div class="card-meta">King Cake Days: ${cakeDays}</div>
       <div class="card-meta">Two Buckets: ${classification.halves}</div>
       <div class="card-meta">Three Buckets: ${classification.thirds}</div>
       <div class="card-meta">Four Buckets: ${classification.fourths}</div>
@@ -196,6 +218,10 @@ function setYear(year) {
   halvesResult.textContent = classification.halves;
   thirdsResult.textContent = classification.thirds;
   fourthsResult.textContent = classification.fourths;
+
+  const cakeDays = kingCakeDays(mardi);
+  kingCakeDaysEl.textContent = cakeDays;
+  kingCakeEndEl.textContent = formatDate(mardi);
 
   updateTimelineMarker(index, mardi);
   renderBreakdownTable(index);

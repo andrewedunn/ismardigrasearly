@@ -295,6 +295,41 @@ main {
 }
 
 
+.king-cake-callout {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(135deg, rgba(214, 161, 43, 0.15), rgba(214, 161, 43, 0.08));
+  border: 1px solid rgba(214, 161, 43, 0.3);
+  border-radius: 999px;
+  padding: 0.5rem 1rem;
+  margin: 0.6rem 0 0.9rem;
+  width: fit-content;
+}
+
+.king-cake-icon {
+  font-size: 1.1rem;
+}
+
+.king-cake-text {
+  font-weight: 600;
+  color: var(--ink);
+  font-size: 0.95rem;
+}
+
+#kingCakeDays {
+  font-family: "Fraunces", "Times New Roman", serif;
+  font-size: 1.15rem;
+  color: var(--purple-deep);
+}
+
+.king-cake-range {
+  color: var(--muted);
+  font-size: 0.85rem;
+  padding-left: 0.5rem;
+  border-left: 1px solid rgba(214, 161, 43, 0.4);
+}
+
 .verdict-grid {
   display: grid;
   gap: 0.8rem;
@@ -411,7 +446,7 @@ main {
 .table-wrap table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 600px;
+  min-width: 680px;
 }
 
 th,
@@ -575,6 +610,19 @@ footer {
   .card-list {
     display: grid;
   }
+
+  .king-cake-callout {
+    flex-wrap: wrap;
+    gap: 0.4rem 0.6rem;
+  }
+
+  .king-cake-range {
+    border-left: none;
+    padding-left: 0;
+    width: 100%;
+    margin-left: 1.7rem;
+    margin-top: -0.2rem;
+  }
 }
 
 @media (max-width: 560px) {
@@ -599,6 +647,6 @@ footer {
   }
 
   .table-wrap table {
-    min-width: 520px;
+    min-width: 600px;
   }
 }
