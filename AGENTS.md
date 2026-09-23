@@ -3,14 +3,16 @@
 ## Project Structure & Module Organization
 - `index.html` is the single page entry point and contains the page layout and metadata.
 - `styles.css` holds all styling.
-- `script.js` contains the client-side date logic and DOM updates.
+- `calculator.js` contains shared date logic; `script.js` handles DOM and URL updates.
+- `YYYY.html` pages and `sitemap.xml` are generated; edit the shared source instead.
 - Static assets live at the repo root (`favicon.svg`, `apple-touch-icon.png`, `og-image.png`).
 - `is-mardi-gras-early.prd` captures product notes and positioning.
 
 ## Build, Test, and Development Commands
 - No build step is required; this is a static site.
-- Run locally by opening `index.html` in a browser.
-- Optional local server: `python3 -m http.server` and open `http://localhost:8000/`.
+- Preview with `node scripts/serve.cjs` at `http://127.0.0.1:8000/` (supports clean year URLs).
+- After changing the layout, shared calculator, or year list, run `node scripts/generate-years.cjs`.
+- Verify generated files with `node scripts/generate-years.cjs --check`.
 
 ## Coding Style & Naming Conventions
 - Indentation: 2 spaces in HTML/CSS/JS.
